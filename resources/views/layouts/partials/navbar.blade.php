@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ">
-                <a class="nav-link{{(Request::is('/') ? ' active' : '' )}}"
+                <a class="nav-link{{(Request::is('/') ? ' active' : (Request::is('edit-artikel/*'))? ' active' : (Request::is('artikel/*')) ? ' active' : '' )}}"
                     href="{{route('artikel.index')}}">Artikel</a>
                 <a class="nav-link" href="{{route('artikel.create')}}">Tambah Artikel</a>
                 <a class="nav-link" href="#">Pricing</a>
