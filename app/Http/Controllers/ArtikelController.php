@@ -69,7 +69,7 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        //
+        return view('artikel.edit', compact('artikel'));
     }
 
     /**
@@ -81,7 +81,18 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
-        //
+        $attr = $request->validate([
+            'judul' => 'required|unique:artikel,judul,' . $artikel->id_artikel . ',id_artikel',
+            'isi' => 'required'
+        ]);
+
+        $artikel->update($attr);
+        if ($artikel->wasChanged()) {
+
+            return redirect()->route('artikel.index')->with('status', 'Data berhasil diubah');
+        } else {
+            return redirect()->route('artikel.index');
+        }
     }
 
     /**

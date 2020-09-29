@@ -16,3 +16,5 @@ Route::get('/artikel/{artikel}', 'ArtikelController@show')->name('artikel.show')
 Route::get('/artike/create', 'ArtikelController@create')->name('artikel.create');
 Route::post('/artikel/store', 'ArtikelController@store')->name('artikel.store');
 Route::delete('/artikel/{artikel}', 'ArtikelController@destroy')->name('artikel.delete');
+Route::get('/edit-artikel/{artikel}', 'ArtikelController@edit')->name('artikel.edit');
+Route::post('/update-artikel/{artikel}', 'ArtikelController@update')->name('artikel.update');

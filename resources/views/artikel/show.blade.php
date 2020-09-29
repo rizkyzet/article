@@ -45,7 +45,7 @@
 
 
 
-                <a class="btn btn-success w-20 " href="">Update</a>
+                <a class="btn btn-success w-20 " href="{{route('artikel.edit',[$artikel])}}">Edit</a>
             </div>
             <div class="card-footer text-muted">
                 <a href="{{route('artikel.index')}}" class="btn btn-primary">&larr; Go back</a>
