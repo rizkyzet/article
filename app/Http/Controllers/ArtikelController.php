@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Artikel;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ArtikelController extends Controller
 {
@@ -13,8 +15,16 @@ class ArtikelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
+
+
         $artikel = Artikel::latest()->paginate(6);
 
 

@@ -12,13 +12,12 @@
                 <p> <small class="text-muted">Last updated {{$artikel->updated_at}}</small> &middot; <small
                         class="text-muted">{{$artikel->created_at->diffForHumans()}}</small></p>
                 <p class="card-text">{!! nl2br($artikel->isi)!!}</p>
-
-                <!-- Button trigger modal -->
+                <a class="btn btn-success w-20 @guest disabled @endguest"
+                    href="{{route('artikel.edit',[$artikel])}}">Edit</a>
+                {{-- /Delete --}}
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$artikel->slug}}">
                     Delete
                 </button>
-
-                <!-- Modal -->
                 <div class="modal fade" id="{{$artikel->slug}}" tabindex="-1" aria-labelledby="{{$artikel->slug}}Label"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -42,10 +41,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <a class="btn btn-success w-20 " href="{{route('artikel.edit',[$artikel])}}">Edit</a>
+                {{-- /Delete --}}
             </div>
             <div class="card-footer text-muted">
                 <a href="{{route('artikel.index')}}" class="btn btn-primary">&larr; Go back</a>

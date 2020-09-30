@@ -14,4 +14,9 @@ class Artikel extends Model
     {
         return 'slug';
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'ArtikelController@index')->name('artikel.index');
-Route::get('/artikel/{artikel}', 'ArtikelController@show')->name('artikel.show');
-Route::get('/artike/create', 'ArtikelController@create')->name('artikel.create');
+Route::get('/artikel/create', 'ArtikelController@create')->name('artikel.create');
+Route::get('/artikel/show/{artikel}', 'ArtikelController@show')->name('artikel.show');
 Route::post('/artikel/store', 'ArtikelController@store')->name('artikel.store');
 Route::delete('/artikel/{artikel}', 'ArtikelController@destroy')->name('artikel.delete');
 Route::get('/artikel/edit/{artikel}', 'ArtikelController@edit')->name('artikel.edit');
@@ -22,3 +22,7 @@ Route::post('/artikel/update/{artikel}', 'ArtikelController@update')->name('arti
 Route::fallback(function () {
     return abort(404);
 });
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
