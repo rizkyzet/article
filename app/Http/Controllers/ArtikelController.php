@@ -79,6 +79,8 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
+        $this->authorize('update', $artikel);
+
         return view('artikel.edit', compact('artikel'));
     }
 
@@ -91,7 +93,7 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
-
+        $this->authorize('update', $artikel);
         $attr = $request->validate([
             'judul' => 'required|unique:artikel,judul,' . $artikel->id_artikel . ',id_artikel',
             'isi' => 'required'
@@ -115,6 +117,7 @@ class ArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
 
+        $this->authorize('delete', $artikel);
         $artikel->delete();
 
         return redirect()->route('artikel.index')->with('status', 'Artikel <strong>' . $artikel->judul . '</strong> telah dihapus!');
