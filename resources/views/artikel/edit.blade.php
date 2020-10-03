@@ -10,6 +10,7 @@
             <div class="card-body">
                 <form method="POST" action="{{route('artikel.update',$artikel)}}">
                     @csrf
+
                     <div class="form-group">
                         <label for="judul">Judul</label>
                         <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul"

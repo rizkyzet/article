@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request;
+use illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -41,10 +42,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // public function login(Request $request)
-    // {
-    //     dd($request->all());
-    // }
 
 
     public function logout(Request $request)

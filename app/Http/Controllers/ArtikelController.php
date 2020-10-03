@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ArtikelController extends Controller
 {
@@ -55,6 +56,8 @@ class ArtikelController extends Controller
             'isi' => 'required'
         ]);
         $attr['slug'] = Str::slug($request->judul);
+        $attr['user_id'] = Auth::user()->id;
+
         Artikel::create($attr);
 
         return redirect()->route('artikel.index')->with('status', 'Artikel Berhasil Ditambahkan!');
@@ -68,6 +71,7 @@ class ArtikelController extends Controller
      */
     public function show(Artikel $artikel)
     {
+
         return view('artikel.show', compact('artikel'));
     }
 
@@ -98,6 +102,7 @@ class ArtikelController extends Controller
             'judul' => 'required|unique:artikel,judul,' . $artikel->id_artikel . ',id_artikel',
             'isi' => 'required'
         ]);
+        $attr['slug'] = Str::slug($request->judul);
 
         $artikel->update($attr);
         if ($artikel->wasChanged()) {

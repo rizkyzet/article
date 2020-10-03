@@ -13,12 +13,11 @@
                         class="text-muted">{{$artikel->created_at->diffForHumans()}}</small> &middot; <small
                         class="text-muted">{{$artikel->user->name}} </small> </p>
                 <p class="card-text">{!! nl2br($artikel->isi)!!}</p>
-                @can('update', $artikel)
+
 
                 <a class="btn btn-success w-20 " href="{{route('artikel.edit',[$artikel])}}">Edit</a>
-                @endcan
 
-                @can('delete', $artikel)
+
                 {{-- /Delete --}}
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$artikel->slug}}">
                     Delete
@@ -47,7 +46,7 @@
                     </div>
                 </div>
                 {{-- /Delete --}}
-                @endcan
+
             </div>
             <div class="card-footer text-muted">
                 <a href="{{route('artikel.index')}}" class="btn btn-primary">&larr; Go back</a>

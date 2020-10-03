@@ -18,7 +18,6 @@ class ArtikelPolicy
      */
     public function viewAny(User $user)
     {
-        //
     }
 
     /**

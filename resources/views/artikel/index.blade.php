@@ -26,6 +26,14 @@
 
                         <small class="text-secondary">
                             {{$a->created_at->diffForHumans()}}
+                            @if (Auth::check())
+                            @if (Auth::user()->id == $a->user_id)
+                            &middot;
+                            Your Post
+                            @endif
+
+                            @endif
+
                         </small>
                         <a href="{{route('artikel.show',['artikel'=>$a])}}" class="btn btn-primary float-right">Lihat
                             &raquo;</a>
